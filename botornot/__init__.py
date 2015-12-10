@@ -17,11 +17,10 @@ class BotOrNot(object):
         self.consumer_secret = consumer_secret
         self.access_token_key = access_token
         self.access_token_secret = access_token_secret
+        self.wait_on_ratelimit = kwargs.get('wait_on_ratelimit', False)
 
         auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
         auth.set_access_token(self.access_token_key, self.access_token_secret)
-
-        self.wait_on_ratelimit = kwargs.get('wait_on_ratelimit', False)
         self.twitter_api = tweepy.API(auth,
                 parser=tweepy.parsers.JSONParser(),
                 wait_on_rate_limit=self.wait_on_ratelimit)
@@ -53,6 +52,7 @@ class BotOrNot(object):
 
         self._bon_get = _rate_limited(requests.get)
         self._bon_post = _rate_limited(requests.post)
+
 
     @property
     def bon_api_path(self, method=''):
@@ -94,7 +94,7 @@ class BotOrNot(object):
                         'user_id': user_data['id_str'],
                         'screen_name': user_data['screen_name'],
                     },
-        })
+                })
 
         bon_resp = self._bon_post(self._bon_api_method('check_account'),
                 data=post_body)
