@@ -32,3 +32,25 @@ Result:
   }
 }
 ```
+
+## Install instructions
+
+1. Clone this repository and navigate to it with your terminal of choice.
+2. `python setup.py install`
+
+## Dependencies
+
+### Python dependencies
+* [requests](http://docs.python-requests.org/en/latest/)
+* [tweepy](https://github.com/tweepy/tweepy)
+
+Both of these dependencies are available via `pip`, so you can install both at once with
+
+    pip install requests tweepy
+    
+### Twitter app
+In order to access Twitter's API, one needs to have/create a [Twitter app](https://apps.twitter.com/).
+Once you've created an app, the authentication info can be found in the "Keys and Access Tokens" tab of the app's properties:
+![Screenshot of app "Keys and Access Tokens"](https://s3.amazonaws.com/clayadavis_public/twitter_app_keys.png)
+
+
