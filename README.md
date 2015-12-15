@@ -14,7 +14,7 @@ twitter_app_auth = {
     'consumer_secret': 'xxxxxxxxxx',
     'access_token': 'xxxxxxxxx',
     'access_token_secret': 'xxxxxxxxxxx',
-  )
+  }
 bon = botornot.BotOrNot(**twitter_app_auth)
 
 bon.check_account('@clayadavis')
