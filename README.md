@@ -1,7 +1,7 @@
 # BotOrNot Python API
 A Python API for [Truthy BotOrNot](http://truthy.indiana.edu/botornot/).
 
-Behind the scenes, this uses the BotOrNot's REST endpoint as illustrated in
+Behind the scenes, this uses the BotOrNot's HTTP endpoint as illustrated in
 [this notebook](http://truthy.indiana.edu/botornot/http-api.html).
 
 ## Quickstart
