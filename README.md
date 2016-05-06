@@ -5,7 +5,13 @@ Behind the scenes, this uses the BotOrNot's HTTP endpoint as illustrated in
 [this notebook](http://truthy.indiana.edu/botornot/http-api.html).
 
 ## Quickstart
+From your command shell, run 
 
+```
+pip install botornot
+```
+
+then in a Python shell or script, enter something like this:
 ```python
 import botornot
 
