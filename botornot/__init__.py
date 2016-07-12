@@ -1,5 +1,4 @@
 from __future__ import print_function
-import json
 import time
 import tweepy
 import requests
@@ -88,16 +87,13 @@ class BotOrNot(object):
 
 
     def _check_account(self, user_data, tweets):
-        post_body = json.dumps({
-                'content': tweets,
-                    'meta': {
-                        'user_id': user_data['id_str'],
-                        'screen_name': user_data['screen_name'],
-                    },
-                })
+        post_body = {'content': tweets,
+                     'meta': {'user_id': user_data['id_str'],
+                              'screen_name': user_data['screen_name']}
+                     }
 
-        bon_resp = self._bon_post(self._bon_api_method('check_account'),
-                data=post_body)
+        _url = self._bon_api_method('check_account')
+        bon_resp = self._bon_post(_url, json=post_body)
         return bon_resp.json()
 
 
