@@ -6,6 +6,12 @@ from functools import wraps
 from tweepy import RateLimitError
 
 
+class NoTimelineError(ValueError):
+    def __init__(self, sn, *args, **kwargs):
+        msg = "user '%s' has no tweets in timeline" % sn
+        return super(NoTimelineError, self).__init__(msg, *args, **kwargs)
+
+
 class BotOrNot(object):
     _BON_RL_MSG = 'Rate limit exceeded for BotOrNot API method'
     _TWITTER_RL_MSG = 'Rate limit exceeded for Twitter API method'
@@ -97,8 +103,12 @@ class BotOrNot(object):
         return bon_resp.json()
 
 
+
+
     def check_account(self, user):
         user_data, tweets = self._get_user_and_tweets(user)
+        if not tweets:
+            raise NoTimelineError(user)
         classification = self._check_account(user_data, tweets)
 
         return classification
