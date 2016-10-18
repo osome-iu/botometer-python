@@ -23,7 +23,12 @@ twitter_app_auth = {
   }
 bon = botornot.BotOrNot(**twitter_app_auth)
 
-bon.check_account('@clayadavis')
+# Check a single account
+result = bon.check_account('@clayadavis')
+
+# Check a sequence of accounts
+accounts = ['@clayadavis', '@onurvarol', '@jabawack']
+results = list(bon.check_accounts(accounts))
 ```
 
 Result:

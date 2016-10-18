@@ -3,7 +3,8 @@ import time
 import tweepy
 import requests
 from functools import wraps
-from tweepy import RateLimitError
+from tweepy import RateLimitError, TweepError
+from requests import ConnectionError, Timeout
 
 
 class NoTimelineError(ValueError):
@@ -20,7 +21,7 @@ class BotOrNot(object):
             access_token, access_token_secret, **kwargs):
         self.consumer_key = consumer_key
         self.consumer_secret = consumer_secret
-        self.access_token_key = access_token
+        self.access_token_key = self.access_token = access_token
         self.access_token_secret = access_token_secret
         self.wait_on_ratelimit = kwargs.get('wait_on_ratelimit', False)
 
@@ -57,6 +58,13 @@ class BotOrNot(object):
 
         self._bon_get = _rate_limited(requests.get)
         self._bon_post = _rate_limited(requests.post)
+
+
+    @classmethod
+    def create_from(cls, instance, **kwargs):
+        my_kwargs = vars(instance)
+        my_kwargs.update(kwargs)
+        return cls(**my_kwargs)
 
 
     @property
@@ -103,6 +111,9 @@ class BotOrNot(object):
         return bon_resp.json()
 
 
+    ####################
+    ## Public methods ##
+    ####################
 
 
     def check_account(self, user):
@@ -112,3 +123,34 @@ class BotOrNot(object):
         classification = self._check_account(user_data, tweets)
 
         return classification
+
+
+    def check_accounts_in(self, accounts, **kwargs):
+        #sub_instance_kwargs = vars(self)
+        #sub_instance_kwargs['wait_on_ratelimit'] = True
+        sub_instance = self.create_from(self, wait_on_ratelimit=True)
+        # BotOrNot(**sub_instance_kwargs)
+
+        max_retries = kwargs.get('retries', 3)
+        num_retries = 0
+
+        for account in accounts:
+            for num_retries in range(max_retries + 1):
+                result = None
+                try:
+                    result = sub_instance.check_account(account)
+                except (TweepError, NoTimelineError) as e:
+                    err_msg = '{}: {}'.format(
+                            type(e).__name__,
+                            getattr(e, 'msg', '') or getattr(e, 'reason', ''),
+                    )
+                    result = {'error': err_msg}
+                except (Timeout, ConnectionError) as e:
+                    if num_retries >= max_retries:
+                        raise
+                    else:
+                        time.sleep(2 ** num_retries)
+
+                if result is not None:
+                    yield account, result
+                    break
