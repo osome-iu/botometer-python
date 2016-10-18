@@ -126,10 +126,7 @@ class BotOrNot(object):
 
 
     def check_accounts_in(self, accounts, **kwargs):
-        #sub_instance_kwargs = vars(self)
-        #sub_instance_kwargs['wait_on_ratelimit'] = True
         sub_instance = self.create_from(self, wait_on_ratelimit=True)
-        # BotOrNot(**sub_instance_kwargs)
 
         max_retries = kwargs.get('retries', 3)
         num_retries = 0
