@@ -28,7 +28,7 @@ result = bon.check_account('@clayadavis')
 
 # Check a sequence of accounts
 accounts = ['@clayadavis', '@onurvarol', '@jabawack']
-results = list(bon.check_accounts(accounts))
+results = list(bon.check_accounts_in(accounts))
 ```
 
 Result:
