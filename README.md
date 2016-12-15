@@ -4,6 +4,9 @@ A Python API for [Truthy BotOrNot](http://truthy.indiana.edu/botornot/).
 Behind the scenes, this uses the BotOrNot's HTTP endpoint as illustrated in
 [this notebook](http://truthy.indiana.edu/botornot/http-api.html).
 
+## Help
+You probably want to have a look at [Troubleshooting & FAQ](/truthy/botornot-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
+
 ## Quickstart
 From your command shell, run 
 
