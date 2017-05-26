@@ -18,13 +18,14 @@ then in a Python shell or script, enter something like this:
 ```python
 import botometer
 
+mashape_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
     'consumer_secret': 'xxxxxxxxxx',
     'access_token': 'xxxxxxxxx',
     'access_token_secret': 'xxxxxxxxxxx',
   }
-bom = botometer.Botometer(**twitter_app_auth)
+bom = botometer.Botometer(mashape_key=mashape_key, **twitter_app_auth)
 
 # Check a single account
 result = bom.check_account('@clayadavis')
@@ -37,15 +38,21 @@ results = list(bom.check_accounts_in(accounts))
 Result:
 ```json
 {
-  "score": 0.37,
-  "meta": {"screen_name": "clayadavis", "user_id": "1548959833"},
   "categories": {
-    "content_classification": 0.27,
-    "friend_classification": 0.15,
-    "network_classification": 0.17,
-    "sentiment_classification": 0.25,
-    "temporal_classification": 0.43,
-    "user_classification": 0.36
+    "content": 0.18,
+    "friend": 0.25,
+    "network": 0.13,
+    "sentiment": 0.19,
+    "temporal": 0.31,
+    "user": 0.44
+  },
+  "scores": {
+    "english": 0.2,
+    "universal": 0.25
+  },
+  "user": {
+    "id_str": "1548959833",
+    "screen_name": "clayadavis"
   }
 }
 ```
