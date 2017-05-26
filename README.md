@@ -71,10 +71,16 @@ Result:
 Both of these dependencies are available via `pip`, so you can install both at once with
 
     pip install requests tweepy
+
+### Mashape Market API key
+Our API is served via [Mashape Market](//market.mashape.com). You must sign up
+for a free account in order to obtain a Mashape secret key. The easiest way to
+get your secret key is to visit
+[our API endpoint page](https://market.mashape.com/OSoMe/botometer)
+and look in the "Request Example" as shown below:
+![Screenshot of Mashape "Request example"](/docs/mashape_key.png)
     
 ### Twitter app
 In order to access Twitter's API, one needs to have/create a [Twitter app](https://apps.twitter.com/).
 Once you've created an app, the authentication info can be found in the "Keys and Access Tokens" tab of the app's properties:
-![Screenshot of app "Keys and Access Tokens"](https://s3.amazonaws.com/clayadavis_public/twitter_app_keys.png)
-
-
+![Screenshot of app "Keys and Access Tokens"](/docs/twitter_app_keys.png)
