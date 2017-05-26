@@ -1,14 +1,14 @@
 from setuptools import setup
 
-setup(name='botornot',
-      version='0.3',
+setup(name='botometer',
+      version='1.0',
       description='Check Twitter accounts for bot behavior',
-      url='https://github.com/truthy/botornot-python',
-      download_url='https://github.com/truthy/botornot-python/archive/0.3.zip',
+      url='https://github.com/IUNetSci/botometer-python',
+      download_url='https://github.com/IUNetSci/botometer-python/archive/1.0.zip',
       author='Clayton A Davis',
       author_email='claydavi@indiana.edu',
       license='MIT',
-      packages=['botornot'],
+      packages=['botometer'],
       install_requires=[
           'requests',
           'tweepy',

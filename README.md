@@ -1,59 +1,69 @@
-# BotOrNot Python API
-A Python API for [Truthy BotOrNot](http://truthy.indiana.edu/botornot/).
+# Botometer Python API
+A Python API for [Botometer by OSoMe](https://osome.iuni.iu.edu).
 
-Behind the scenes, this uses the BotOrNot's HTTP endpoint as illustrated in
-[this notebook](http://truthy.indiana.edu/botornot/http-api.html).
+Behind the scenes, this uses the Botometer's HTTP endpoint, available via
+[Mashape Market](https://market.mashape.com/OSoMe/botometer).
 
 ## Help
-You probably want to have a look at [Troubleshooting & FAQ](/truthy/botornot-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
+You probably want to have a look at [Troubleshooting & FAQ](/truthy/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
 
 ## Quickstart
 From your command shell, run 
 
 ```
-pip install botornot
+pip install botometer
 ```
 
 then in a Python shell or script, enter something like this:
 ```python
-import botornot
+import botometer
 
+mashape_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
     'consumer_secret': 'xxxxxxxxxx',
     'access_token': 'xxxxxxxxx',
     'access_token_secret': 'xxxxxxxxxxx',
   }
-bon = botornot.BotOrNot(**twitter_app_auth)
+bom = botometer.Botometer(mashape_key=mashape_key, **twitter_app_auth)
 
 # Check a single account
-result = bon.check_account('@clayadavis')
+result = bom.check_account('@clayadavis')
 
 # Check a sequence of accounts
 accounts = ['@clayadavis', '@onurvarol', '@jabawack']
-results = list(bon.check_accounts_in(accounts))
+results = list(bom.check_accounts_in(accounts))
 ```
 
 Result:
 ```json
 {
-  "score": 0.37,
-  "meta": {"screen_name": "clayadavis", "user_id": "1548959833"},
   "categories": {
-    "content_classification": 0.27,
-    "friend_classification": 0.15,
-    "network_classification": 0.17,
-    "sentiment_classification": 0.25,
-    "temporal_classification": 0.43,
-    "user_classification": 0.36
+    "content": 0.18,
+    "friend": 0.25,
+    "network": 0.13,
+    "sentiment": 0.19,
+    "temporal": 0.31,
+    "user": 0.44
+  },
+  "scores": {
+    "english": 0.2,
+    "universal": 0.25
+  },
+  "user": {
+    "id_str": "1548959833",
+    "screen_name": "clayadavis"
   }
 }
 ```
 
 ## Install instructions
 
-1. Clone this repository and navigate to it with your terminal of choice.
-2. `python setup.py install`
+This package is on PyPI so you can install it with pip:
+
+```
+$ pip install botometer
+```
 
 ## Dependencies
 
@@ -64,10 +74,16 @@ Result:
 Both of these dependencies are available via `pip`, so you can install both at once with
 
     pip install requests tweepy
+
+### Mashape Market API key
+Our API is served via [Mashape Market](//market.mashape.com). You must sign up
+for a free account in order to obtain a Mashape secret key. The easiest way to
+get your secret key is to visit
+[our API endpoint page](https://market.mashape.com/OSoMe/botometer)
+and look in the "Request Example" as shown below:
+![Screenshot of Mashape "Request example"](/docs/mashape_key.png)
     
 ### Twitter app
 In order to access Twitter's API, one needs to have/create a [Twitter app](https://apps.twitter.com/).
 Once you've created an app, the authentication info can be found in the "Keys and Access Tokens" tab of the app's properties:
-![Screenshot of app "Keys and Access Tokens"](https://s3.amazonaws.com/clayadavis_public/twitter_app_keys.png)
-
-
+![Screenshot of app "Keys and Access Tokens"](/docs/twitter_app_keys.png)
