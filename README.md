@@ -59,8 +59,11 @@ Result:
 
 ## Install instructions
 
-1. Clone this repository and navigate to it with your terminal of choice.
-2. `python setup.py install`
+This package is on PyPI so you can install it with pip:
+
+```
+$ pip install botometer
+```
 
 ## Dependencies
 
