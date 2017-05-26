@@ -1,22 +1,22 @@
-# BotOrNot Python API
-A Python API for [Truthy BotOrNot](http://truthy.indiana.edu/botornot/).
+# Botometer Python API
+A Python API for [Botometer by OSoMe](https://osome.iuni.iu.edu).
 
-Behind the scenes, this uses the BotOrNot's HTTP endpoint as illustrated in
-[this notebook](http://truthy.indiana.edu/botornot/http-api.html).
+Behind the scenes, this uses the Botometer's HTTP endpoint, available via
+[Mashape Market](https://market.mashape.com/OSoMe/botometer).
 
 ## Help
-You probably want to have a look at [Troubleshooting & FAQ](/truthy/botornot-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
+You probably want to have a look at [Troubleshooting & FAQ](/truthy/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
 
 ## Quickstart
 From your command shell, run 
 
 ```
-pip install botornot
+pip install botometer
 ```
 
 then in a Python shell or script, enter something like this:
 ```python
-import botornot
+import botometer
 
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
@@ -24,14 +24,14 @@ twitter_app_auth = {
     'access_token': 'xxxxxxxxx',
     'access_token_secret': 'xxxxxxxxxxx',
   }
-bon = botornot.BotOrNot(**twitter_app_auth)
+bom = botometer.Botometer(**twitter_app_auth)
 
 # Check a single account
-result = bon.check_account('@clayadavis')
+result = bom.check_account('@clayadavis')
 
 # Check a sequence of accounts
 accounts = ['@clayadavis', '@onurvarol', '@jabawack']
-results = list(bon.check_accounts_in(accounts))
+results = list(bom.check_accounts_in(accounts))
 ```
 
 Result:
