@@ -87,3 +87,11 @@ and look in the "Request Example" as shown below:
 In order to access Twitter's API, one needs to have/create a [Twitter app](https://apps.twitter.com/).
 Once you've created an app, the authentication info can be found in the "Keys and Access Tokens" tab of the app's properties:
 ![Screenshot of app "Keys and Access Tokens"](/docs/twitter_app_keys.png)
+
+## References
+
+- Varol, Onur, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, and Alessandro Flammini. "Online Human-Bot Interactions: Detection, Estimation, and Characterization." ICWSM (2017). [AAAI](https://aaai.org/ocs/index.php/ICWSM/ICWSM17/paper/view/15587), [ArXiv](https://arxiv.org/abs/1703.03107)
+
+- Davis, C. A., Varol, O., Ferrara, E., Flammini, A., & Menczer, F. (2016, April). BotOrNot: A system to evaluate social bots. In Proceedings of the 25th International Conference Companion on World Wide Web (pp. 273-274). International World Wide Web Conferences Steering Committee. [ArXiv](https://arxiv.org/abs/1602.00975), [ACM Library](http://dl.acm.org/citation.cfm?id=2889302)
+
+- Ferrara, Emilio, Onur Varol, Clayton Davis, Filippo Menczer, and Alessandro Flammini. "The rise of social bots." Communications of the ACM 59, no. 7 (2016): 96-104. [ArXiv](https://arxiv.org/abs/1407.5225), [ACM Library](http://dl.acm.org/citation.cfm?id=2963119.2818717&coll=portal&dl=ACM)
