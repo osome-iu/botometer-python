@@ -5,7 +5,7 @@ Behind the scenes, this uses the Botometer's HTTP endpoint, available via
 [Mashape Market](https://market.mashape.com/OSoMe/botometer).
 
 ## Help
-You probably want to have a look at [Troubleshooting & FAQ](/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
+You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
 
 ## Quickstart
 From your command shell, run 
