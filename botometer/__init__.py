@@ -1,10 +1,8 @@
 from __future__ import print_function
 import time
-import warnings
-from functools import wraps
 
 import requests
-from requests import ConnectionError, Timeout
+from requests import ConnectionError, HTTPError, Timeout
 import tweepy
 from tweepy import RateLimitError, TweepError
 
@@ -127,7 +125,6 @@ class Botometer(object):
         sub_instance = self.create_from(self, wait_on_ratelimit=True)
 
         max_retries = kwargs.get('retries', 3)
-        num_retries = 0
 
         for account in accounts:
             for num_retries in range(max_retries + 1):
@@ -141,16 +138,17 @@ class Botometer(object):
                         getattr(e, 'msg', '') or getattr(e, 'reason', ''),
                         )
                     result = {'error': err_msg}
-                except (Timeout, ConnectionError) as e:
+                except (ConnectionError, HTTPError, Timeout) as e:
                     if num_retries >= max_retries:
                         raise
                     else:
                         time.sleep(2 ** num_retries)
                 except Exception as e:
-                    if on_error:
-                        on_error(account, e)
-                    else:
-                        raise
+                    if num_retries >= max_retries:
+                        if on_error:
+                            on_error(account, e)
+                        else:
+                            raise
 
                 if result is not None:
                     yield account, result
