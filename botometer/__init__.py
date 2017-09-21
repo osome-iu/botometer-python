@@ -122,7 +122,8 @@ class Botometer(object):
         return classification
 
 
-    def check_accounts_in(self, accounts, full_user_object=False, **kwargs):
+    def check_accounts_in(self, accounts, full_user_object=False,
+                          on_error=None, **kwargs):
         sub_instance = self.create_from(self, wait_on_ratelimit=True)
 
         max_retries = kwargs.get('retries', 3)
@@ -145,6 +146,11 @@ class Botometer(object):
                         raise
                     else:
                         time.sleep(2 ** num_retries)
+                except Exception as e:
+                    if on_error:
+                        on_error(account, e)
+                    else:
+                        raise
 
                 if result is not None:
                     yield account, result
