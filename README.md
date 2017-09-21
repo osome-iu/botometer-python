@@ -25,14 +25,17 @@ twitter_app_auth = {
     'access_token': 'xxxxxxxxx',
     'access_token_secret': 'xxxxxxxxxxx',
   }
-bom = botometer.Botometer(mashape_key=mashape_key, **twitter_app_auth)
+bom = botometer.Botometer(wait_on_ratelimit=True,
+                          mashape_key=mashape_key,
+                          **twitter_app_auth)
 
 # Check a single account
 result = bom.check_account('@clayadavis')
 
 # Check a sequence of accounts
 accounts = ['@clayadavis', '@onurvarol', '@jabawack']
-results = list(bom.check_accounts_in(accounts))
+for screen_name, result in bom.check_accounts_in(accounts):
+    # Do stuff
 ```
 
 Result:
