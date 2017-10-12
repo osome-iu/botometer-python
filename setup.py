@@ -11,6 +11,6 @@ setup(name='botometer',
       packages=['botometer'],
       install_requires=[
           'requests',
-          'tweepy',
+          'tweepy >= 3.5.0',
           ],
       )
