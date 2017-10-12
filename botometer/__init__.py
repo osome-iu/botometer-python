@@ -6,7 +6,7 @@ from functools import wraps
 import requests
 from requests import ConnectionError, Timeout
 import tweepy
-from tweepy import RateLimitError, TweepError
+from tweepy.error import RateLimitError, TweepError
 
 
 class NoTimelineError(ValueError):
