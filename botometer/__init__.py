@@ -62,7 +62,12 @@ class Botometer(object):
 
     def _get_twitter_data(self, user, full_user_object=False):
         try:
-            user_timeline = self.twitter_api.user_timeline(user, count=200)
+            user_timeline = self.twitter_api.user_timeline(
+                    user,
+                    include_rts=True,
+                    count=200,
+                    )
+
         except RateLimitError as e:
             e.args = (self._TWITTER_RL_MSG, 'statuses/user_timeline')
             raise e
