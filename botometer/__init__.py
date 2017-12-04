@@ -127,8 +127,9 @@ class Botometer(object):
 
     def check_accounts_in(self, accounts, full_user_object=False,
                           on_error=None, **kwargs):
-        sub_instance = self.create_from(self, wait_on_ratelimit=True)
 
+        sub_instance = self.create_from(self, wait_on_ratelimit=True,
+                                        botometer_api_url=self.api_url)
         max_retries = kwargs.get('retries', 3)
 
         for account in accounts:
