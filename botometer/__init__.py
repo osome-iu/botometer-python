@@ -16,8 +16,11 @@ class NoTimelineError(ValueError):
 class Botometer(object):
     _TWITTER_RL_MSG = 'Rate limit exceeded for Twitter API method'
 
-    def __init__(self, consumer_key, consumer_secret, access_token,
-                 access_token_secret, mashape_key=None, **kwargs):
+    def __init__(self,
+                 consumer_key, consumer_secret,
+                 access_token=None, access_token_secret=None,
+                 mashape_key=None,
+                 **kwargs):
         self.consumer_key = consumer_key
         self.consumer_secret = consumer_secret
         self.access_token_key = self.access_token = access_token
@@ -26,8 +29,15 @@ class Botometer(object):
 
         self.mashape_key = mashape_key
 
-        auth = tweepy.OAuthHandler(self.consumer_key, self.consumer_secret)
-        auth.set_access_token(self.access_token_key, self.access_token_secret)
+        if self.access_token_key is None or self.access_token_secret is None:
+            auth = tweepy.AppAuthHandler(
+                self.consumer_key, self.consumer_secret)
+        else:
+            auth = tweepy.OAuthHandler(
+                self.consumer_key, self.consumer_secret)
+            auth.set_access_token(
+                self.access_token_key, self.access_token_secret)
+
         self.twitter_api = tweepy.API(
             auth,
             parser=tweepy.parsers.JSONParser(),
