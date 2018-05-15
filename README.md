@@ -46,24 +46,41 @@ for screen_name, result in bom.check_accounts_in(accounts):
 Result:
 ```json
 {
+  "cap": {
+    "english": 0.0011785984309163565,
+    "universal": 0.0016912294273666159
+  },
   "categories": {
-    "content": 0.18,
-    "friend": 0.25,
-    "network": 0.13,
-    "sentiment": 0.19,
-    "temporal": 0.31,
-    "user": 0.44
+    "content": 0.058082395351262375,
+    "friend": 0.044435259626385865,
+    "network": 0.07064549990637549,
+    "sentiment": 0.07214003430676995,
+    "temporal": 0.07924665710801207,
+    "user": 0.027817972609638725
+  },
+  "display_scores": {
+    "content": 0.3,
+    "english": 0.1,
+    "friend": 0.2,
+    "network": 0.4,
+    "sentiment": 0.4,
+    "temporal": 0.4,
+    "universal": 0.1,
+    "user": 0.1
   },
   "scores": {
-    "english": 0.2,
-    "universal": 0.25
+    "english": 0.0215615093045025,
+    "universal": 0.0254864249403189
   },
   "user": {
     "id_str": "1548959833",
-    "screen_name": "clayadavis"
+    "screen_name": "clayadavis",
+    "...": "..."
   }
 }
 ```
+
+For more information on this response object, consule the [API Overview](https://market.mashape.com/OSoMe/botometer/overview#wiki-response-object) on Mashape.
 
 ## Install instructions
 
