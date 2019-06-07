@@ -4,7 +4,7 @@ A Python API for [Botometer by OSoMe](https://osome.iuni.iu.edu).
 Previously known as `botornot-python`.
 
 Behind the scenes, this uses the Botometer's HTTP endpoint, available via
-[Mashape Market](https://market.mashape.com/OSoMe/botometer).
+[RapidAPI](https://rapidapi.com/OSoMe/api/botometer).
 
 ## Help
 You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
@@ -80,7 +80,7 @@ Result:
 }
 ```
 
-For more information on this response object, consule the [API Overview](https://market.mashape.com/OSoMe/botometer/overview#wiki-response-object) on Mashape.
+For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer/details) on RapidAPI.
 
 ## Install instructions
 
@@ -100,13 +100,14 @@ Both of these dependencies are available via `pip`, so you can install both at o
 
     pip install requests tweepy
 
-### Mashape Market API key
-Our API is served via [Mashape Market](//market.mashape.com). You must sign up
-for a free account in order to obtain a Mashape secret key. The easiest way to
+### RapidAPI key
+Our API is served via [RapidAPI](//rapidapi.com). You must sign up
+for a free account in order to obtain a RapidAPI secret key. The easiest way to
 get your secret key is to visit
-[our API endpoint page](https://market.mashape.com/OSoMe/botometer)
-and look in the "Request Example" as shown below:
-![Screenshot of Mashape "Request example"](/docs/mashape_key.png)
+[our API endpoint page](https://rapidapi.com/OSoMe/api/botometer)
+and look in the endpoint's header parametsrs for the "X-RapidAPI-Key" as shown below:
+
+![Screenshot of RapidAPI header parameters](/docs/rapidapi_key.png)
     
 ### Twitter app
 In order to access Twitter's API, one needs to have/create a [Twitter app](https://apps.twitter.com/).
