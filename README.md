@@ -20,7 +20,7 @@ then in a Python shell or script, enter something like this:
 ```python
 import botometer
 
-mashape_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+mashape_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # now it's called rapidapi key
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
     'consumer_secret': 'xxxxxxxxxx',
@@ -115,6 +115,8 @@ Once you've created an app, the authentication info can be found in the "Keys an
 ![Screenshot of app "Keys and Access Tokens"](/docs/twitter_app_keys.png)
 
 ## References
+
+- Yang, Kai‐Cheng, Onur Varol, Clayton A. Davis, Emilio Ferrara, Alessandro Flammini, and Filippo Menczer. "Arming the public with artificial intelligence to counter social bots." Human Behavior and Emerging Technologies 1, no. 1 (2019): 48-61. [DOI](https://onlinelibrary.wiley.com/doi/full/10.1002/hbe2.115), [ArXiv](https://arxiv.org/abs/1901.00912)
 
 - Varol, Onur, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, and Alessandro Flammini. "Online Human-Bot Interactions: Detection, Estimation, and Characterization." ICWSM (2017). [AAAI](https://aaai.org/ocs/index.php/ICWSM/ICWSM17/paper/view/15587), [ArXiv](https://arxiv.org/abs/1703.03107)
 
