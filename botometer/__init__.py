@@ -19,7 +19,7 @@ class Botometer(object):
     def __init__(self,
                  consumer_key, consumer_secret,
                  access_token=None, access_token_secret=None,
-                 mashape_key=None,
+                 rapidapi_key=None,
                  **kwargs):
         self.consumer_key = consumer_key
         self.consumer_secret = consumer_secret
@@ -27,7 +27,7 @@ class Botometer(object):
         self.access_token_secret = access_token_secret
         self.wait_on_ratelimit = kwargs.get('wait_on_ratelimit', False)
 
-        self.mashape_key = mashape_key
+        self.rapidapi_key = rapidapi_key
 
         if self.access_token_key is None or self.access_token_secret is None:
             auth = tweepy.AppAuthHandler(
@@ -45,7 +45,7 @@ class Botometer(object):
             )
 
         self.api_url = kwargs.get('botometer_api_url',
-                                  'https://osome-botometer.p.mashape.com')
+                                  'https://osome-botometer.p.rapidapi.com')
         self.api_version = kwargs.get('botometer_api_version', 2)
 
     @classmethod
@@ -55,19 +55,19 @@ class Botometer(object):
         return cls(**my_kwargs)
 
 
-    def _add_mashape_header(self, kwargs):
-        if self.mashape_key:
+    def _add_rapidapi_header(self, kwargs):
+        if self.rapidapi_key:
             kwargs.setdefault('headers', {}).update({
-                'X-Mashape-Key': self.mashape_key
+                'x-rapidapi-key': self.rapidapi_key
             })
         return kwargs
 
     def _bom_get(self, *args, **kwargs):
-        self._add_mashape_header(kwargs)
+        self._add_rapidapi_header(kwargs)
         return requests.get(*args, **kwargs)
 
     def _bom_post(self, *args, **kwargs):
-        self._add_mashape_header(kwargs)
+        self._add_rapidapi_header(kwargs)
         return requests.post(*args, **kwargs)
 
     def _get_twitter_data(self, user, full_user_object=False):
