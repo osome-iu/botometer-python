@@ -6,6 +6,12 @@ Previously known as `botornot-python`.
 Behind the scenes, this uses the Botometer's HTTP endpoint, available via
 [RapidAPI](https://rapidapi.com/OSoMe/api/botometer).
 
+## [Change Note]
+
+Mashape has renamed itself to [RapidAPI](https://rapidapi.com/).
+The old mashape.com based URL and HTTP headers were deprecated in Sep 1st, 2019.
+So please upgrade `botometer-python` package in your local environment to the least version for the change.
+
 ## Help
 You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
 
