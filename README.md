@@ -20,7 +20,7 @@ then in a Python shell or script, enter something like this:
 ```python
 import botometer
 
-mashape_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # now it's called rapidapi key
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # now it's called rapidapi key
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
     'consumer_secret': 'xxxxxxxxxx',
@@ -28,7 +28,7 @@ twitter_app_auth = {
     'access_token_secret': 'xxxxxxxxxxx',
   }
 bom = botometer.Botometer(wait_on_ratelimit=True,
-                          mashape_key=mashape_key,
+                          rapidapi_key=rapidapi_key,
                           **twitter_app_auth)
 
 # Check a single account by screen name
