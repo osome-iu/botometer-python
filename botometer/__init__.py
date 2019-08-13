@@ -27,7 +27,7 @@ class Botometer(object):
         self.access_token_secret = access_token_secret
         self.wait_on_ratelimit = kwargs.get('wait_on_ratelimit', False)
 
-        self.rapidapi_key = rapidapi_key
+        self.rapidapi_key = rapidapi_key or kwargs.get('mashape_key')
 
         if self.access_token_key is None or self.access_token_secret is None:
             auth = tweepy.AppAuthHandler(
