@@ -91,7 +91,7 @@ Result:
 }
 ```
 
-For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer/details) on RapidAPI.
+For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
 
 ## Install instructions
 
@@ -115,7 +115,7 @@ Both of these dependencies are available via `pip`, so you can install both at o
 Our API is served via [RapidAPI](//rapidapi.com). You must sign up
 for a free account in order to obtain a RapidAPI secret key. The easiest way to
 get your secret key is to visit
-[our API endpoint page](https://rapidapi.com/OSoMe/api/botometer)
+[our API endpoint page](https://rapidapi.com/OSoMe/api/botometer-pro/endpoints)
 and look in the endpoint's header parametsrs for the "X-RapidAPI-Key" as shown below:
 
 ![Screenshot of RapidAPI header parameters](/docs/rapidapi_key.png)
