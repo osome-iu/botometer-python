@@ -125,6 +125,26 @@ In order to access Twitter's API, one needs to have/create a [Twitter app](https
 Once you've created an app, the authentication info can be found in the "Keys and Access Tokens" tab of the app's properties:
 ![Screenshot of app "Keys and Access Tokens"](/docs/twitter_app_keys.png)
 
+## Authentication
+
+By default, Botometer uses **user authentication** when interacting with Twitter's API as it is the least restrictive and the ratelimit matches with Botometer's **Pro** plan: 180 requests per 15-minute window.
+One can instead use Twitter's **application authentication** in order to take advantage of the higher ratelimit that matches our **Ultra** plan: 450 requests per 15-minute window. Do note the differences between user and app-only authentication found under the header "Twitter API Authentication Model" in [Twitter's docs on authentication](https://developer.twitter.com/en/docs/basics/authentication/overview/oauth).
+
+To use app-only auth, just omit the `access_token` and `access_token_secret` in the `Botometer` constructor.
+
+```python
+import botometer
+
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # now it's called rapidapi key
+twitter_app_auth = {
+    'consumer_key': 'xxxxxxxx',
+    'consumer_secret': 'xxxxxxxxxx'
+  }
+bom = botometer.Botometer(wait_on_ratelimit=True,
+                          rapidapi_key=rapidapi_key,
+                          **twitter_app_auth)
+```
+
 ## References
 
 - Yang, Kai‐Cheng, Onur Varol, Clayton A. Davis, Emilio Ferrara, Alessandro Flammini, and Filippo Menczer. "Arming the public with artificial intelligence to counter social bots." Human Behavior and Emerging Technologies 1, no. 1 (2019): 48-61. [DOI](https://onlinelibrary.wiley.com/doi/full/10.1002/hbe2.115), [ArXiv](https://arxiv.org/abs/1901.00912)
