@@ -7,6 +7,11 @@ Behind the scenes, this uses the Botometer's HTTP endpoint, available via
 [RapidAPI](https://rapidapi.com/OSoMe/api/botometer-pro).
 
 ## [Change Note]
+### May, 2020
+
+We have made some changes to our API, please read the [annoucnment](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the least version.
+
+### Sep, 2019
 
 Mashape has renamed itself to [RapidAPI](https://rapidapi.com/).
 The old mashape.com based URL and HTTP headers were deprecated in Sep 1st, 2019.
