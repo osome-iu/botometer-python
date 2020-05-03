@@ -45,7 +45,7 @@ class Botometer(object):
             )
 
         self.api_url = kwargs.get('botometer_api_url',
-                                  'https://osome-botometer.p.rapidapi.com')
+                                  'https://botometer-pro.p.rapidapi.com')
         self.api_version = kwargs.get('botometer_api_version', 2)
 
     @classmethod
