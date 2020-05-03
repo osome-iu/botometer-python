@@ -4,7 +4,7 @@ A Python API for [Botometer by OSoMe](https://osome.iuni.iu.edu).
 Previously known as `botornot-python`.
 
 Behind the scenes, this uses the Botometer's HTTP endpoint, available via
-[RapidAPI](https://rapidapi.com/OSoMe/api/botometer).
+[RapidAPI](https://rapidapi.com/OSoMe/api/botometer-pro).
 
 ## [Change Note]
 
