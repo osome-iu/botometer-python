@@ -6,6 +6,8 @@ Previously known as `botornot-python`.
 Behind the scenes, this uses the Botometer's HTTP endpoint, available via
 [RapidAPI](https://rapidapi.com/OSoMe/api/botometer-pro).
 
+RapidAPI usage/account related questions should be posted on RapidAPI discussion.
+
 ## [Change Note]
 ### May, 2020
 
