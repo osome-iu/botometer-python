@@ -11,7 +11,7 @@ RapidAPI usage/account related questions should be posted on RapidAPI discussion
 ## [Change Note]
 ### May, 2020
 
-We have made some changes to our API, please read the [annoucnment](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the least version.
+We have made some changes to our API, please read the [annoucnment](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work and produce 404 errors. Please upgrade it in your local environment to the least version.
 
 ### Sep, 2019
 
