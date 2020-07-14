@@ -20,7 +20,19 @@ The old mashape.com based URL and HTTP headers were deprecated in Sep 1st, 2019.
 So please upgrade `botometer-python` package in your local environment to the least version for the change.
 
 ## Help
-You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
+> You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
+
+## Prior to Utilizing Botometer
+To begin using Botometer, you must follow the steps below before running any code:
+1. Create a free [RapidAPI](https://rapidapi.com/) account.
+2. Subscribe to [Botometer Pro](https://rapidapi.com/OSoMe/api/botometer-pro) on RapidApi.
+    > There is a completely free version (which does not require any credit card information) for testing purposes.
+3. Create a Twitter application via https://developer.twitter.com/
+    > Botometer utilizes the access credentials provided by Twitter for the application.
+4. Ensure Botometer Pro's dependencies are already installed. 
+    > See the [Dependencies](#dependencies) section for details.
+
+**Note:** These steps are necessary to access credentials and download other packages which are needed for Botometer to work properly. Please see [RapidAPI and Twitter Access Details](#access) below for more details on this topic.
 
 ## Quickstart
 From your command shell, run 
@@ -96,13 +108,13 @@ Result:
 For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
 
 ## Install instructions
-
 This package is on PyPI so you can install it with pip:
 
 ```
 $ pip install botometer
 ```
 
+<a id="dependencies"></a>
 ## Dependencies
 
 ### Python dependencies
@@ -113,7 +125,11 @@ Both of these dependencies are available via `pip`, so you can install both at o
 
     pip install requests tweepy
 
+<a id="access"></a>
+## RapidAPI and Twitter Access Details
+
 ### RapidAPI key
+
 Our API is served via [RapidAPI](//rapidapi.com). You must sign up
 for a free account in order to obtain a RapidAPI secret key. The easiest way to
 get your secret key is to visit
@@ -128,7 +144,6 @@ Once you've created an app, the authentication info can be found in the "Keys an
 ![Screenshot of app "Keys and Access Tokens"](/docs/twitter_app_keys.png)
 
 ## Authentication
-
 By default, Botometer uses **user authentication** when interacting with Twitter's API as it is the least restrictive and the ratelimit matches with Botometer's **Pro** plan: 180 requests per 15-minute window.
 One can instead use Twitter's **application authentication** in order to take advantage of the higher ratelimit that matches our **Ultra** plan: 450 requests per 15-minute window. Do note the differences between user and app-only authentication found under the header "Twitter API Authentication Model" in [Twitter's docs on authentication](https://developer.twitter.com/en/docs/basics/authentication/overview/oauth).
 
@@ -141,14 +156,13 @@ rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # now it's called rapidapi key
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
     'consumer_secret': 'xxxxxxxxxx'
-  }
+    }
 bom = botometer.Botometer(wait_on_ratelimit=True,
                           rapidapi_key=rapidapi_key,
                           **twitter_app_auth)
 ```
 
 ## References
-
 - Yang, Kai‐Cheng, Onur Varol, Clayton A. Davis, Emilio Ferrara, Alessandro Flammini, and Filippo Menczer. "Arming the public with artificial intelligence to counter social bots." Human Behavior and Emerging Technologies 1, no. 1 (2019): 48-61. [DOI](https://onlinelibrary.wiley.com/doi/full/10.1002/hbe2.115), [ArXiv](https://arxiv.org/abs/1901.00912)
 
 - Varol, Onur, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, and Alessandro Flammini. "Online Human-Bot Interactions: Detection, Estimation, and Characterization." ICWSM (2017). [AAAI](https://aaai.org/ocs/index.php/ICWSM/ICWSM17/paper/view/15587), [ArXiv](https://arxiv.org/abs/1703.03107)
@@ -159,3 +173,9 @@ bom = botometer.Botometer(wait_on_ratelimit=True,
 
 
 - Ferrara, Emilio, Onur Varol, Clayton Davis, Filippo Menczer, and Alessandro Flammini. "The rise of social bots." Communications of the ACM 59, no. 7 (2016): 96-104. [ArXiv](https://arxiv.org/abs/1407.5225), [ACM Library](http://dl.acm.org/citation.cfm?id=2963119.2818717&coll=portal&dl=ACM)
+
+
+
+```python
+
+```
