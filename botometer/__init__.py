@@ -239,15 +239,10 @@ class BotometerLite(Botometer):
             raise e
         return user_objs
 
-    def _check_accounts_twitter_mode(self, is_id, ids_or_names, **kwargs):
+    def _check_accounts_twitter_mode(self, query, **kwargs):
         assert self.twitter_mode, "Twitter app key missing"
 
-        ids_or_names = list(ids_or_names)[:100]
-
-        if is_id:
-            query = {"user_ids": ids_or_names}
-        else:
-            query = {"screen_names": ids_or_names}
+        query = list(query)[:100]
 
         user_objs = self._get_twitter_data(**query)
         now_str = self._get_utc_now()
@@ -261,10 +256,12 @@ class BotometerLite(Botometer):
         return self.check_accounts_from_tweets(dummy_tweets)
 
     def check_accounts_from_user_ids(self, user_ids, **kwargs):
-        return self._check_accounts_twitter_mode(True, user_ids, **kwargs)
+        query = {"user_ids": user_ids}
+        return self._check_accounts_twitter_mode(query, **kwargs)
 
     def check_accounts_from_screen_names(self, screen_names, **kwargs):
-        return self._check_accounts_twitter_mode(False, screen_names, **kwargs)
+        query = {"screen_names": screen_names}
+        return self._check_accounts_twitter_mode(query, **kwargs)
 
     def check_accounts_from_tweets(self, tweets):
         url = self.bom_api_path('check_accounts_in_bulk')
