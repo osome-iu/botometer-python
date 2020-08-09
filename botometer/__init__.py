@@ -195,6 +195,7 @@ class BotometerLite(Botometer):
     Lists of tweets/user_ids/screen_names with more than 100 elements would be truncated to 100.
     The users are responsible to handle the exceptions.
     """
+    TWEETS_PER_REQUEST = 100
     def __init__(
         self,
         rapidapi_key=None,
@@ -242,8 +243,6 @@ class BotometerLite(Botometer):
     def _check_accounts_twitter_mode(self, query, **kwargs):
         assert self.twitter_mode, "Twitter app key missing"
 
-        query = list(query)[:100]
-
         user_objs = self._get_twitter_data(**query)
         now_str = self._get_utc_now()
 
@@ -256,14 +255,29 @@ class BotometerLite(Botometer):
         return self.check_accounts_from_tweets(dummy_tweets)
 
     def check_accounts_from_user_ids(self, user_ids, **kwargs):
-        query = {"user_ids": user_ids}
+        """
+        Check accounts based on a list of user_ids.
+        The list should contain no more than 100 elements.
+        A valid Twitter APP key is required.
+        """
+        query = {"user_ids": list(user_ids)[:self.TWEETS_PER_REQUEST]}
         return self._check_accounts_twitter_mode(query, **kwargs)
 
     def check_accounts_from_screen_names(self, screen_names, **kwargs):
-        query = {"screen_names": screen_names}
+        """
+        Check accounts based on a list of screen_names (please remove the @).
+        The list should contain no more than 100 elements.
+        A valid Twitter APP key is required.
+        """
+        query = {"screen_names": list(screen_names)[:self.TWEETS_PER_REQUEST]}
         return self._check_accounts_twitter_mode(query, **kwargs)
 
     def check_accounts_from_tweets(self, tweets):
+        """
+        Check accounts based on a list of tweets.
+        The list should contain no more than 100 elements.
+        No Twitter APP key is required.
+        """
         url = self.bom_api_path('check_accounts_in_bulk')
         bom_resp = self._bom_post(url, json=tweets)
         bom_resp.raise_for_status()
