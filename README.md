@@ -115,9 +115,60 @@ Result:
 }
 ```
 
+For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
+
 ### BotometerLite
 
-For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
+In August, 2020, the BotometerLite endpoint is added. It leverages a lightweighted model and allows detecting bots in bulk.
+Before accessing it, please make sure you have subscribed to the ULTRA plan on RapidAPI.
+
+Unlike Botometer-V4, BotometerLite just needs the user profile information and the timestamp of when the information was collected to perform bot detection.
+There are two modes for BotometerLite: the non-Twitter mode and Twitter mode.
+
+If you have already collected at least one tweet for each account you want to check, you can use the non-Twitter mode.
+In this mode, you don't need a valid Twitter APP key.
+Only the RapidAPI key is required.
+
+```python
+import botometer
+
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+blt = botometer.BotometerLite(rapidapi_key=rapidapi_key)
+
+# Prepare a list of tweets from the users that you want to perform bot detection on.
+# The list should contain no more than 100 tweets.
+tweet_list = [tweet1, tweet2, ...] 
+
+blt.check_accounts_from_tweets(tweet_list)
+```
+
+If you only have a set of user_ids or screen_names, you will have to use the Twitter mode.
+In addition to the RapidAPI key, this model also requires a valid Twitter APP key.
+
+```python
+import botometer
+
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+twitter_app_auth = {
+    'consumer_key': 'xxxxxxxx',
+    'consumer_secret': 'xxxxxxxxxx',
+    'access_token': 'xxxxxxxxx',
+    'access_token_secret': 'xxxxxxxxxxx',
+  }
+  
+blt_twitter = botometer.BotometerLite(rapidapi_key=rapidapi_key, **twitter_app_auth)
+
+# Prepare a list of screen_names you want to check.
+# The list should contain no more than 100 screen_names; please remove the @
+screen_name_list = ['yang3kc', 'onurvarol', 'clayadavis']
+blt_twitter.check_accounts_from_screen_names(screen_name_list)
+
+# Prepare a list of user_ids you want to check.
+# The list should contain no more than 100 user_ids.
+user_id_list = [1133069780917850112, 77436536, 1548959833]
+blt_twitter.check_accounts_from_user_ids(user_id_list)
+
+```
 
 ## Install instructions
 This package is on PyPI so you can install it with pip:
