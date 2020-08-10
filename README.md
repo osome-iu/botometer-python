@@ -48,12 +48,14 @@ From your command shell, run
 ```
 pip install botometer
 ```
+### Botometer-V4
 
-then in a Python shell or script, enter something like this:
+To access the Botometer-V4 API, enter something like this in a Python shell or script:
+
 ```python
 import botometer
 
-rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # now it's called rapidapi key
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
     'consumer_secret': 'xxxxxxxxxx',
@@ -112,6 +114,8 @@ Result:
   }
 }
 ```
+
+### BotometerLite
 
 For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
 
