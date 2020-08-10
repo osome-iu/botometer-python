@@ -126,8 +126,7 @@ Unlike Botometer-V4, BotometerLite just needs the user profile information and t
 There are two modes for BotometerLite: the non-Twitter mode and Twitter mode.
 
 If you have already collected at least one tweet for each account you want to check, you can use the non-Twitter mode.
-In this mode, you don't need a valid Twitter APP key.
-Only the RapidAPI key is required.
+In this mode, you only need a RapidAPI key.
 
 ```python
 import botometer
@@ -194,7 +193,7 @@ Result:
 The tweet_id is set to null in this mode.
 
 Note that in the non-Twitter mode, the returned scores reflect the status of the accounts when the tweets were collected.
-In the Twitter mode, on the other hand, the scores reflect the status of the accounts when you run the code.
+In the Twitter mode, on the other hand, the scores reflect the status of the accounts when you run the code, just like the Botometer-V4 endpoint.
 
 ## Install instructions
 This package is on PyPI so you can install it with pip:
