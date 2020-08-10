@@ -12,13 +12,16 @@ RapidAPI usage/account related questions should be posted on RapidAPI discussion
 
 ### August, 2020
 
-Due to the recent upgrade (see the announcement), the botometer-python package also has some changes:
+We have a major update for Botometer:
 
-1. The old `/2/check_acount` endpoint is deprecated. Please use the new `/4/check_account` endpiont to access the Botometer-V4 API.
-2. A new endpoint for BotometerLite is added. It allows checking accounts in bulk. Please see the [doc] for how to work with it.
+1. Botometer has been upgraded to V4, and you can use the `/4/check_account` endpiont to access it.
+2. A new endpoint for BotometerLite is added. It allows checking accounts in bulk.
 
+You can see full announcement for details.
 
-Due to these changes, please upgrade `botometer-python` in your local environment to the least version.
+Due to the update, please upgrade `botometer-python` in your local environment to the least version.
+If you only use the Botometer API like before, there is no need to change your code once you upgrade `botometer-python`.
+If you want to try the new BotometerLite API, checkout the documents.
 
 ### May, 2020
 
