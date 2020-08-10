@@ -15,13 +15,15 @@ RapidAPI usage/account related questions should be posted on RapidAPI discussion
 We have a major update for Botometer:
 
 1. Botometer has been upgraded to V4, and you can use the `/4/check_account` endpiont to access it.
-2. A new endpoint for BotometerLite is added. It allows checking accounts in bulk.
+2. The response of `/4/check_account` is reorganized.
+3. A new endpoint for BotometerLite is added. It allows checking accounts in bulk.
 
 You can see the full announcement for details.
 
 Due to the update, please upgrade `botometer-python` in your local environment to the newest version.
-If you only use the Botometer API like before, there is no need to change your code once you upgrade `botometer-python`.
-If you want to try the new BotometerLite API, checkout the documents.
+You may also need to modify your code to adapt to the new response of the API.
+For more information, checkout the document below.
+If you want to try the new BotometerLite API, checkout the document below.
 
 ### May, 2020
 
@@ -81,37 +83,57 @@ for screen_name, result in bom.check_accounts_in(accounts):
 Result:
 ```json
 {
-  "cap": {
-    "english": 0.0011785984309163565,
-    "universal": 0.0016912294273666159
-  },
-  "categories": {
-    "content": 0.058082395351262375,
-    "friend": 0.044435259626385865,
-    "network": 0.07064549990637549,
-    "sentiment": 0.07214003430676995,
-    "temporal": 0.07924665710801207,
-    "user": 0.027817972609638725
-  },
-  "display_scores": {
-    "content": 0.3,
-    "english": 0.1,
-    "friend": 0.2,
-    "network": 0.4,
-    "sentiment": 0.4,
-    "temporal": 0.4,
-    "universal": 0.1,
-    "user": 0.1
-  },
-  "scores": {
-    "english": 0.0215615093045025,
-    "universal": 0.0254864249403189
-  },
-  "user": {
-    "id_str": "1548959833",
-    "screen_name": "clayadavis",
-    "...": "..."
-  }
+    "cap": {
+        "english": 0.005111405685777122,
+        "universal": 0.010921183488062881
+    },
+    "display_scores": {
+        "english": {
+            "fake_follower": 1.0,
+            "financial": 0.0,
+            "other": 0.2,
+            "overall": 0.3,
+            "political": 0.3,
+            "self_declared": 0.1,
+            "spammer": 0.2
+        },
+        "universal": {
+            "fake_follower": 1.0,
+            "financial": 0.0,
+            "other": 0.2,
+            "overall": 0.5,
+            "political": 0.0,
+            "self_declared": 0.0,
+            "spammer": 0.0
+        }
+    },
+    "raw_scores": {
+        "english": {
+            "fake_follower": 0.19,
+            "financial": 0.0,
+            "other": 0.05,
+            "overall": 0.06,
+            "political": 0.06,
+            "self_declared": 0.02,
+            "spammer": 0.04
+        },
+        "universal": {
+            "fake_follower": 0.21,
+            "financial": 0.0,
+            "other": 0.05,
+            "overall": 0.1,
+            "political": 0.01,
+            "self_declared": 0.0,
+            "spammer": 0.0
+        }
+    },
+    "user": {
+        "majority_lang": "en",
+        "user_data": {
+            "id_str": "1548959833",
+            "screen_name": "clayadavis"
+        }
+    }
 }
 ```
 
