@@ -139,11 +139,24 @@ blt = botometer.BotometerLite(rapidapi_key=rapidapi_key)
 # The list should contain no more than 100 tweets.
 tweet_list = [tweet1, tweet2, ...] 
 
-blt.check_accounts_from_tweets(tweet_list)
+blt_scores = blt.check_accounts_from_tweets(tweet_list)
 ```
+
+Result:
+
+```json
+[
+    {"botscore": 0.65, "tweet_id": "1234",  "user_id": 1111},
+    {"botscore": 0.29, "tweet_id": "12345", "user_id": 2222}
+]
+```
+
+Note that the tweet_id is also included in case multiple tweets from the same user are passed to the API.
 
 If you only have a set of user_ids or screen_names, you will have to use the Twitter mode.
 In addition to the RapidAPI key, this model also requires a valid Twitter APP key.
+The package would first query the Twitter user lookup API to fetch the user profiles then pass the data to RapidAPI
+for the botscores.
 
 ```python
 import botometer
@@ -161,14 +174,27 @@ blt_twitter = botometer.BotometerLite(rapidapi_key=rapidapi_key, **twitter_app_a
 # Prepare a list of screen_names you want to check.
 # The list should contain no more than 100 screen_names; please remove the @
 screen_name_list = ['yang3kc', 'onurvarol', 'clayadavis']
-blt_twitter.check_accounts_from_screen_names(screen_name_list)
+blt_scores = blt_twitter.check_accounts_from_screen_names(screen_name_list)
 
 # Prepare a list of user_ids you want to check.
 # The list should contain no more than 100 user_ids.
 user_id_list = [1133069780917850112, 77436536, 1548959833]
-blt_twitter.check_accounts_from_user_ids(user_id_list)
-
+blt_scores = blt_twitter.check_accounts_from_user_ids(user_id_list)
 ```
+
+Result:
+```json
+[
+    {"botscore": 0.17, "tweet_id": null, "user_id": 1133069780917850112},
+    {"botscore": 0.2,  "tweet_id": null, "user_id": 77436536},
+    {"botscore": 0.16, "tweet_id": null, "user_id": 1548959833}
+]
+```
+
+The tweet_id is set to null in this mode.
+
+Note that in the non-Twitter mode, the returned scores reflect the status of the accounts when the tweets were collected.
+In the Twitter mode, on the other hand, the scores reflect the status of the accounts when you run the code.
 
 ## Install instructions
 This package is on PyPI so you can install it with pip:
