@@ -7,15 +7,19 @@ Behind the scenes, this uses the Botometer's HTTP endpoint, available via
 [RapidAPI](https://rapidapi.com/OSoMe/api/botometer-pro).
 
 ## [Change Note]
+
+### August, 2020
+
+Due to the recent upgrade (see the announcement), the botometer-python package also has some changes:
+
+1. The old `/2/check_acount` endpoint is deprecated. Please use the new `/4/check_account` endpiont to access the Botometer-V4 API.
+2. A new endpoint for BotometerLite is added. It allows checking accounts in bulk. Please see the [doc] for how to work with it.
+
+Due to these changes, please upgrade `botometer-python` in your local environment to the least version.
+
 ### May, 2020
 
-We have made some changes to our API, please read the [annoucnment](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the least version.
-
-### Sep, 2019
-
-Mashape has renamed itself to [RapidAPI](https://rapidapi.com/).
-The old mashape.com based URL and HTTP headers were deprecated in Sep 1st, 2019.
-So please upgrade `botometer-python` package in your local environment to the least version for the change.
+We have made some changes to our API, please read the [announcement](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the least version.
 
 ## Help
 You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
