@@ -17,15 +17,15 @@ We have a major update for Botometer:
 1. Botometer has been upgraded to V4, and you can use the `/4/check_account` endpiont to access it.
 2. A new endpoint for BotometerLite is added. It allows checking accounts in bulk.
 
-You can see full announcement for details.
+You can see the full announcement for details.
 
-Due to the update, please upgrade `botometer-python` in your local environment to the least version.
+Due to the update, please upgrade `botometer-python` in your local environment to the newest version.
 If you only use the Botometer API like before, there is no need to change your code once you upgrade `botometer-python`.
 If you want to try the new BotometerLite API, checkout the documents.
 
 ### May, 2020
 
-We have made some changes to our API, please read the [announcement](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the least version.
+We have made some changes to our API, please read the [announcement](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the newest version.
 
 ## Help
 > You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
