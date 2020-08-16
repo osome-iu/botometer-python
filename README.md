@@ -10,7 +10,7 @@ RapidAPI usage/account related questions should be posted on RapidAPI discussion
 
 ## [Change Note]
 
-### August, 2020
+### September, 2020
 
 We have a major update for Botometer:
 
@@ -157,7 +157,7 @@ For more information on this response object, consult the [API Overview](https:/
 
 ### BotometerLite
 
-In August, 2020, the BotometerLite endpoint is added. It leverages a lightweighted model and allows detecting bots in bulk.
+In September, 2020, the BotometerLite endpoint is added. It leverages a lightweighted model and allows detecting bots in bulk.
 Before accessing it, please make sure you have subscribed to the ULTRA plan on RapidAPI.
 
 Unlike Botometer-V4, BotometerLite just needs the user profile information and the timestamp of when the information was collected to perform bot detection.
