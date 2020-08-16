@@ -84,58 +84,74 @@ Result:
 ```json
 {
     "cap": {
-        "english": 0.005111405685777122,
-        "universal": 0.010921183488062881
+        "english": 0.8018818614025648,
+        "universal": 0.5557322218336633
     },
     "display_scores": {
         "english": {
-            "fake_follower": 1.0,
-            "financial": 0.0,
-            "other": 0.2,
-            "overall": 0.3,
-            "political": 0.3,
-            "self_declared": 0.1,
-            "spammer": 0.2
+            "astroturf": 0.0,
+            "fake_follower": 4.1,
+            "financial": 1.5,
+            "other": 4.7,
+            "overall": 4.7,
+            "self_declared": 3.2,
+            "spammer": 2.8
         },
         "universal": {
-            "fake_follower": 1.0,
-            "financial": 0.0,
-            "other": 0.2,
-            "overall": 0.5,
-            "political": 0.0,
-            "self_declared": 0.0,
-            "spammer": 0.0
+            "astroturf": 0.3,
+            "fake_follower": 3.2,
+            "financial": 1.6,
+            "other": 3.8,
+            "overall": 3.8,
+            "self_declared": 3.7,
+            "spammer": 2.3
         }
     },
     "raw_scores": {
         "english": {
-            "fake_follower": 0.19,
-            "financial": 0.0,
-            "other": 0.05,
-            "overall": 0.06,
-            "political": 0.06,
-            "self_declared": 0.02,
-            "spammer": 0.04
+            "astroturf": 0.0,
+            "fake_follower": 0.81,
+            "financial": 0.3,
+            "other": 0.94,
+            "overall": 0.94,
+            "self_declared": 0.63,
+            "spammer": 0.57
         },
         "universal": {
-            "fake_follower": 0.21,
-            "financial": 0.0,
-            "other": 0.05,
-            "overall": 0.1,
-            "political": 0.01,
-            "self_declared": 0.0,
-            "spammer": 0.0
+            "astroturf": 0.06,
+            "fake_follower": 0.64,
+            "financial": 0.3133333333333333,
+            "other": 0.76,
+            "overall": 0.76,
+            "self_declared": 0.74,
+            "spammer": 0.47
         }
     },
     "user": {
         "majority_lang": "en",
         "user_data": {
-            "id_str": "1548959833",
-            "screen_name": "clayadavis"
+            "id_str": "11330",
+            "screen_name": "test_screen_name"
         }
     }
 }
 ```
+
+Meanings of the elements in the response:
+
+* **user**: Twitter user object (from the user) plus the language inferred from majority of tweets
+* **raw scores**: in [0,1] interval, both using English (all features) and Universal (language-independent) features; in each case we have the overall score and the sub-scores for each bot class (see below for subclass names and definitions)
+* **display scores**: same as raw scores, but in [0,5] range
+* **cap**: conditional probability accounts with a score equal or greater than this are automated; based on inferred language
+
+Meanings of the bot type scores:
+
+* `fake_follower`: bots purchased to increase follower counts 
+* `self_declared`: bots from botwiki.org
+* `astroturf`: manually labeled political bots and accounts involved in follow trains that systematically delete content
+* `spammer`: accounts labeled as spambots from several datasets
+* `financial `: bots that post using cashtags
+* `other`: miscellaneous other bots obtained from manual annotation, user feedback, etc.
 
 For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
 
