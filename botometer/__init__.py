@@ -206,12 +206,13 @@ class BotometerLite(Botometer):
         **kwargs
     ):
         self.twitter_mode = False
-        if consumer_key is None or consumer_secret is None:
-        # No Twitter mode: the users provide the tweets
-            self.api_url = kwargs.get(
+        lite_api_url = kwargs.get(
                 'botometerlite_api_url',
                 'https://botometer15.p.rapidapi.com'
             )
+        if consumer_key is None or consumer_secret is None:
+        # No Twitter mode: the users provide the tweets
+            self.api_url = lite_api_url
         else:
         # Twitter mode: use Twitter lookup to fetch user profile
             self.twitter_mode = True
@@ -220,6 +221,7 @@ class BotometerLite(Botometer):
                 consumer_secret,
                 access_token=access_token,
                 access_token_secret=access_token_secret,
+                botometer_api_url=lite_api_url,
                 wait_on_ratelimit=kwargs.get('wait_on_ratelimit', False)
             )
 
