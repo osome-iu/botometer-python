@@ -10,19 +10,24 @@ RapidAPI usage/account related questions should be posted on RapidAPI discussion
 
 ## [Change Note]
 
-### August, 2020
+### September, 2020
 
-Due to the recent upgrade (see the announcement), the botometer-python package also has some changes:
+We have a major update for Botometer:
 
-1. The old `/2/check_acount` endpoint is deprecated. Please use the new `/4/check_account` endpiont to access the Botometer-V4 API.
-2. A new endpoint for BotometerLite is added. It allows checking accounts in bulk. Please see the [doc] for how to work with it.
+1. Botometer has been upgraded to V4, and you can use the `/4/check_account` endpiont to access it.
+2. The response of `/4/check_account` is reorganized.
+3. A new endpoint for BotometerLite is added. It allows checking accounts in bulk.
 
+You can see the full announcement for details.
 
-Due to these changes, please upgrade `botometer-python` in your local environment to the least version.
+Due to the update, please upgrade `botometer-python` in your local environment to the newest version.
+You may also need to modify your code to adapt to the new response of the API.
+For more information, checkout the document below.
+If you want to try the new BotometerLite API, checkout the document below.
 
 ### May, 2020
 
-We have made some changes to our API, please read the [announcement](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the least version.
+We have made some changes to our API, please read the [announcement](https://twitter.com/Botometer/status/1250557098708144131) for details. Due to the API change, the old `botometer-python` package might stop to work. Please upgrade it in your local environment to the newest version.
 
 ## Help
 > You probably want to have a look at [Troubleshooting & FAQ](https://github.com/IUNetSci/botometer-python/wiki/Troubleshooting-&-FAQ) in the wiki. Please feel free to suggest and/or contribute improvements to that page.
@@ -45,12 +50,14 @@ From your command shell, run
 ```
 pip install botometer
 ```
+### Botometer-V4
 
-then in a Python shell or script, enter something like this:
+To access the Botometer-V4 API, enter something like this in a Python shell or script:
+
 ```python
 import botometer
 
-rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" # now it's called rapidapi key
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 twitter_app_auth = {
     'consumer_key': 'xxxxxxxx',
     'consumer_secret': 'xxxxxxxxxx',
@@ -76,41 +83,155 @@ for screen_name, result in bom.check_accounts_in(accounts):
 Result:
 ```json
 {
-  "cap": {
-    "english": 0.0011785984309163565,
-    "universal": 0.0016912294273666159
-  },
-  "categories": {
-    "content": 0.058082395351262375,
-    "friend": 0.044435259626385865,
-    "network": 0.07064549990637549,
-    "sentiment": 0.07214003430676995,
-    "temporal": 0.07924665710801207,
-    "user": 0.027817972609638725
-  },
-  "display_scores": {
-    "content": 0.3,
-    "english": 0.1,
-    "friend": 0.2,
-    "network": 0.4,
-    "sentiment": 0.4,
-    "temporal": 0.4,
-    "universal": 0.1,
-    "user": 0.1
-  },
-  "scores": {
-    "english": 0.0215615093045025,
-    "universal": 0.0254864249403189
-  },
-  "user": {
-    "id_str": "1548959833",
-    "screen_name": "clayadavis",
-    "...": "..."
-  }
+    "cap": {
+        "english": 0.8018818614025648,
+        "universal": 0.5557322218336633
+    },
+    "display_scores": {
+        "english": {
+            "astroturf": 0.0,
+            "fake_follower": 4.1,
+            "financial": 1.5,
+            "other": 4.7,
+            "overall": 4.7,
+            "self_declared": 3.2,
+            "spammer": 2.8
+        },
+        "universal": {
+            "astroturf": 0.3,
+            "fake_follower": 3.2,
+            "financial": 1.6,
+            "other": 3.8,
+            "overall": 3.8,
+            "self_declared": 3.7,
+            "spammer": 2.3
+        }
+    },
+    "raw_scores": {
+        "english": {
+            "astroturf": 0.0,
+            "fake_follower": 0.81,
+            "financial": 0.3,
+            "other": 0.94,
+            "overall": 0.94,
+            "self_declared": 0.63,
+            "spammer": 0.57
+        },
+        "universal": {
+            "astroturf": 0.06,
+            "fake_follower": 0.64,
+            "financial": 0.3133333333333333,
+            "other": 0.76,
+            "overall": 0.76,
+            "self_declared": 0.74,
+            "spammer": 0.47
+        }
+    },
+    "user": {
+        "majority_lang": "en",
+        "user_data": {
+            "id_str": "11330",
+            "screen_name": "test_screen_name"
+        }
+    }
 }
 ```
 
+Meanings of the elements in the response:
+
+* **user**: Twitter user object (from the user) plus the language inferred from majority of tweets
+* **raw scores**: in [0,1] interval, both using English (all features) and Universal (language-independent) features; in each case we have the overall score and the sub-scores for each bot class (see below for subclass names and definitions)
+* **display scores**: same as raw scores, but in [0,5] range
+* **cap**: conditional probability accounts with a score equal or greater than this are automated; based on inferred language
+
+Meanings of the bot type scores:
+
+* `fake_follower`: bots purchased to increase follower counts 
+* `self_declared`: bots from botwiki.org
+* `astroturf`: manually labeled political bots and accounts involved in follow trains that systematically delete content
+* `spammer`: accounts labeled as spambots from several datasets
+* `financial `: bots that post using cashtags
+* `other`: miscellaneous other bots obtained from manual annotation, user feedback, etc.
+
 For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
+
+### BotometerLite
+
+In September, 2020, the BotometerLite endpoint is added. It leverages a lightweighted model and allows detecting bots in bulk.
+Before accessing it, please make sure you have subscribed to the ULTRA plan on RapidAPI.
+
+Unlike Botometer-V4, BotometerLite just needs the user profile information and the timestamp of when the information was collected to perform bot detection.
+There are two modes for BotometerLite: the non-Twitter mode and Twitter mode.
+
+If you have already collected at least one tweet for each account you want to check, you can use the non-Twitter mode.
+In this mode, you only need a RapidAPI key.
+
+```python
+import botometer
+
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+blt = botometer.BotometerLite(rapidapi_key=rapidapi_key)
+
+# Prepare a list of tweets from the users that you want to perform bot detection on.
+# The list should contain no more than 100 tweets.
+tweet_list = [tweet1, tweet2, ...] 
+
+blt_scores = blt.check_accounts_from_tweets(tweet_list)
+```
+
+Result:
+
+```json
+[
+    {"botscore": 0.65, "tweet_id": "1234",  "user_id": 1111},
+    {"botscore": 0.29, "tweet_id": "12345", "user_id": 2222}
+]
+```
+
+Note that the tweet_id is also included in case multiple tweets from the same user are passed to the API.
+
+If you only have a set of user_ids or screen_names, you will have to use the Twitter mode.
+In addition to the RapidAPI key, this model also requires a valid Twitter APP key.
+The package would first query the Twitter user lookup API to fetch the user profiles then pass the data to RapidAPI
+for the botscores.
+
+```python
+import botometer
+
+rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+twitter_app_auth = {
+    'consumer_key': 'xxxxxxxx',
+    'consumer_secret': 'xxxxxxxxxx',
+    'access_token': 'xxxxxxxxx',
+    'access_token_secret': 'xxxxxxxxxxx',
+  }
+  
+blt_twitter = botometer.BotometerLite(rapidapi_key=rapidapi_key, **twitter_app_auth)
+
+# Prepare a list of screen_names you want to check.
+# The list should contain no more than 100 screen_names; please remove the @
+screen_name_list = ['yang3kc', 'onurvarol', 'clayadavis']
+blt_scores = blt_twitter.check_accounts_from_screen_names(screen_name_list)
+
+# Prepare a list of user_ids you want to check.
+# The list should contain no more than 100 user_ids.
+user_id_list = [1133069780917850112, 77436536, 1548959833]
+blt_scores = blt_twitter.check_accounts_from_user_ids(user_id_list)
+```
+
+Result:
+```json
+[
+    {"botscore": 0.17, "tweet_id": null, "user_id": 1133069780917850112},
+    {"botscore": 0.2,  "tweet_id": null, "user_id": 77436536},
+    {"botscore": 0.16, "tweet_id": null, "user_id": 1548959833}
+]
+```
+
+The tweet_id is set to null in this mode.
+
+Note that in the non-Twitter mode, the returned scores reflect the status of the accounts when the tweets were collected.
+In the Twitter mode, on the other hand, the scores reflect the status of the accounts when you run the code, just like the Botometer-V4 endpoint.
 
 ## Install instructions
 This package is on PyPI so you can install it with pip:
