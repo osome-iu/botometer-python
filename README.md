@@ -1,6 +1,6 @@
 # Botometer Python API
 
-A Python API for [Botometer by OSoMe](https://osome.iuni.iu.edu).
+A Python API for [Botometer by OSoMe](https://osome.iu.edu).
 Previously known as `botornot-python`.
 
 Behind the scenes, this uses the Botometer's HTTP endpoint, available via
@@ -18,12 +18,12 @@ We have a major update for Botometer:
 2. The response of `/4/check_account` is reorganized.
 3. A new endpoint for BotometerLite is added. It allows checking accounts in bulk.
 
-You can see the full announcement for details.
+You can see the full [announcement](https://cnets.indiana.edu/blog/2020/09/01/botometer-v4/) for details.
 
 Due to the update, please upgrade `botometer-python` in your local environment to the newest version.
-You may also need to modify your code to adapt to the new response of the API.
-For more information, checkout the document below.
-If you want to try the new BotometerLite API, checkout the document below.
+You may also need to modify your code to adapt to the new response from the API.
+For more information, check out the documentation below.
+If you want to try the new BotometerLite API, checkout the documentation below.
 
 ### May, 2020
 
@@ -140,9 +140,9 @@ Result:
 Meanings of the elements in the response:
 
 * **user**: Twitter user object (from the user) plus the language inferred from majority of tweets
-* **raw scores**: in [0,1] interval, both using English (all features) and Universal (language-independent) features; in each case we have the overall score and the sub-scores for each bot class (see below for subclass names and definitions)
-* **display scores**: same as raw scores, but in [0,5] range
-* **cap**: conditional probability accounts with a score equal or greater than this are automated; based on inferred language
+* **raw scores**: bot score in the [0,1] range, both using English (all features) and Universal (language-independent) features; in each case we have the overall score and the sub-scores for each bot class (see below for subclass names and definitions)
+* **display scores**: same as raw scores, but in the [0,5] range
+* **cap**: conditional probability that accounts with a score **equal to or greater than this** are automated; based on inferred language
 
 Meanings of the bot type scores:
 
@@ -153,15 +153,15 @@ Meanings of the bot type scores:
 * `financial `: bots that post using cashtags
 * `other`: miscellaneous other bots obtained from manual annotation, user feedback, etc.
 
-For more information on this response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
+For more information on the response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
 
 ### BotometerLite
 
-In September, 2020, the BotometerLite endpoint is added. It leverages a lightweighted model and allows detecting bots in bulk.
+In September, 2020, the BotometerLite endpoint was added. It leverages a lightweighted model and allows detecting likely bots in bulk.
 Before accessing it, please make sure you have subscribed to the ULTRA plan on RapidAPI.
 
 Unlike Botometer-V4, BotometerLite just needs the user profile information and the timestamp of when the information was collected to perform bot detection.
-There are two modes for BotometerLite: the non-Twitter mode and Twitter mode.
+There are two modes for BotometerLite: non-Twitter mode and Twitter mode.
 
 If you have already collected at least one tweet for each account you want to check, you can use the non-Twitter mode.
 In this mode, you only need a RapidAPI key.
@@ -191,9 +191,9 @@ Result:
 Note that the tweet_id is also included in case multiple tweets from the same user are passed to the API.
 
 If you only have a set of user_ids or screen_names, you will have to use the Twitter mode.
-In addition to the RapidAPI key, this model also requires a valid Twitter APP key.
-The package would first query the Twitter user lookup API to fetch the user profiles then pass the data to RapidAPI
-for the botscores.
+In addition to the RapidAPI key, this mode also requires a valid Twitter APP key.
+The package would first query the Twitter user lookup API to fetch the user profiles, then pass the data to the Botometer Pro API
+for the bot scores.
 
 ```python
 import botometer
