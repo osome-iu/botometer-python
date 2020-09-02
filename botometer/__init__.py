@@ -208,7 +208,7 @@ class BotometerLite(Botometer):
         self.twitter_mode = False
         lite_api_url = kwargs.get(
                 'botometerlite_api_url',
-                'https://botometer15.p.rapidapi.com'
+                'https://botometer-pro.p.rapidapi.com'
             )
         if consumer_key is None or consumer_secret is None:
         # No Twitter mode: the users provide the tweets
