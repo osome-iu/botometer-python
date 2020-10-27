@@ -21,6 +21,7 @@ class Botometer(object):
                  consumer_key, consumer_secret,
                  access_token=None, access_token_secret=None,
                  rapidapi_key=None,
+                 tweepy_kwargs={},
                  **kwargs):
         self.consumer_key = consumer_key
         self.consumer_secret = consumer_secret
@@ -43,7 +44,7 @@ class Botometer(object):
             auth,
             parser=tweepy.parsers.JSONParser(),
             wait_on_rate_limit=self.wait_on_ratelimit,
-            )
+            **tweepy_kwargs)
 
         self.api_url = kwargs.get('botometer_api_url',
                                   'https://botometer-pro.p.rapidapi.com')
