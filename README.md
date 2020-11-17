@@ -35,7 +35,7 @@ We have made some changes to our API, please read the [announcement](https://twi
 ## Prior to Utilizing Botometer
 To begin using Botometer, you must follow the steps below before running any code:
 1. Create a free [RapidAPI](https://rapidapi.com/) account.
-2. Subscribe to [Botometer Pro](https://rapidapi.com/OSoMe/api/botometer-pro) on RapidApi.
+2. Subscribe to [Botometer Pro](https://rapidapi.com/OSoMe/api/botometer-pro) on RapidApi by selecting a plan.
     > There is a completely free version (which does not require any credit card information) for testing purposes.
 3. Create a Twitter application via https://developer.twitter.com/
     > Botometer utilizes the access credentials provided by Twitter for the application.
