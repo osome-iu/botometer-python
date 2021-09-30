@@ -10,6 +10,17 @@ RapidAPI usage/account related questions should be posted on RapidAPI discussion
 
 ## [Change Note]
 
+### September, 2021
+
+We have a minor update for botometer-python.
+
+Recently Tweepy had a major upgrade (v3.10.0 -> v4.0.0) that is not back compatible.
+Upgrading your local Tweepy may break botometer-python and throw "No module named 'tweepy.error'" error.
+To fix it, simply downgrade Tweepy to previous versions such as v3.10.0. 
+
+We upgraded botometer-python to v1.6.1 to specify the acceptable versions of Tweepy.
+There is nothing you need to do if you already have the correct version of Tweepy.
+
 ### September, 2020
 
 We have a major update for Botometer:
