@@ -301,7 +301,7 @@ bom = botometer.Botometer(wait_on_ratelimit=True,
 
 ## References
 
-- ***Botometer v4:*** Mohsen Sayyadiharikandeh, Onur Varol, Kai-Cheng Yang, Alessandro Flammini, Filippo Menczer. "Detection of Novel Social Bots by Ensembles of Specialized Classifiers." [ArXiv](https://arxiv.org/abs/2006.06867)
+- ***Botometer v4:*** Mohsen Sayyadiharikandeh, Onur Varol, Kai-Cheng Yang, Alessandro Flammini, Filippo Menczer. "Detection of Novel Social Bots by Ensembles of Specialized Classifiers." [DOI](https://doi.org/10.1145/3340531.3412698), [ArXiv](https://arxiv.org/abs/2006.06867)
 
 - ***BotometerLite:*** Yang, K.; Varol, O.; Hui, P.; and Menczer, F. "Scalable and Generalizable Social Bot Detection through Data Selection." AAAI (2020). [DOI](http://doi.org/10.1609/aaai.v34i01.5460), [ArXiv](https://arxiv.org/abs/1911.09179)
 
