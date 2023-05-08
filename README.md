@@ -8,7 +8,14 @@ Behind the scenes, this uses the Botometer's HTTP endpoint, available via
 
 RapidAPI usage/account related questions should be posted on RapidAPI discussion.
 
-## [Change Note]
+## [Change Note/Announcement]
+
+### May, 2023
+
+Twitter is in the process of suspending free API access for third-party developers. Once the Botometer users lose access to Twitter API V1.1, they can no longer obtain fresh data needed for Botometer Pro API. For the time being, we will keep the Botometer Pro API endpoints alive so that users can analyze data collected before. Users wishing for a refund for the latest billing cycle of the Botometer Pro API can send their requests to RapidAPI (support@rapidapi.com) directly.
+
+We are actively working on new Botometer Pro API endpoints compatible with Twitter API V2.0 data. The goal is to allow users who can obtain data from Twitter (through purchase or other approaches) to continue using Botometer API for analysis. Please stay tuned for the updates.
+
 
 ### September, 2021
 
