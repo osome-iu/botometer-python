@@ -48,23 +48,46 @@ import botometer
 rapidapi_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 bomx = botometer.BotometerX(rapidapi_key=rapidapi_key)
+```
 
-# Check accounts by screen names
+
+```python
+# Check accounts by usernames, note that @ is optional
+bomx.get_botscores_in_batch(usernames=['@OSoMe_IU', 'botometer'])
 
 # Check accounts by ids
+bomx.get_botscores_in_batch(user_ids=[2451308594, 187521608])
 
-# Check accounts by both screen names and ids
+# Check accounts by both usernames and ids
+bomx.get_botscores_in_batch(usernames=['@OSoMe_IU'], user_ids=[2451308594])
 ```
 
+The queries will return results like those below:
 
-Result:
 ```json
-{}
+[
+    {
+        'bot_score': 0.09,
+        'timestamp': 'Sat, 27 May 2023 23:57:16 GMT',
+        'user_id': '2451308594',
+        'username': 'Botometer'
+    },
+    {
+        'bot_score': 0.21,
+        'timestamp': 'Thu, 25 May 2023 22:54:53 GMT',
+        'user_id': '187521608',
+        'username': 'OSoMe_IU'
+    }
+]
 ```
+The response will be a list of JSON objects.
+Meanings of the elements in the object:
+- `bot_score`: The bot score, a float number between 0 and 1
+- `timestamp`: The time when the bot score was calculated
+- `user_id`: ID of the account
+- `username`: Username of the account
 
-Meanings of the elements in the response:
-
-For more information on the response object, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
+For more information on the API, consult the [API Overview](https://rapidapi.com/OSoMe/api/botometer-pro/details) on RapidAPI.
 
 
 ## Installation instructions
@@ -80,10 +103,7 @@ $ pip install botometer
 ### Python dependencies
 * [requests](http://docs.python-requests.org/en/latest/)
 
-Both of these dependencies are available via `pip`, so you can install both at once with
-
-    pip install requests tweepy
-
+The dependency should be installed automatically with pip.
 
 ## References
 
