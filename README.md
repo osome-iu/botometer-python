@@ -67,16 +67,16 @@ The queries will return results like those below:
 ```json
 [
     {
-        'bot_score': 0.09,
-        'timestamp': 'Sat, 27 May 2023 23:57:16 GMT',
-        'user_id': '2451308594',
-        'username': 'Botometer'
+        "bot_score": 0.09,
+        "timestamp": "Sat, 27 May 2023 23:57:16 GMT",
+        "user_id": "2451308594",
+        "username": "Botometer"
     },
     {
-        'bot_score': 0.21,
-        'timestamp': 'Thu, 25 May 2023 22:54:53 GMT',
-        'user_id': '187521608',
-        'username': 'OSoMe_IU'
+        "bot_score": 0.21,
+        "timestamp": "Thu, 25 May 2023 22:54:53 GMT",
+        "user_id": "187521608",
+        "username": "OSoMe_IU"
     }
 ]
 ```
