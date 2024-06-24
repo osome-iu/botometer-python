@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="botometer",
-    version="2.0.0",
+    version="2.0.1",
     description="Check Twitter accounts for bot behavior",
     url="https://github.com/osome-iu/botometer-python",
     author="Kai-Cheng Yang",
