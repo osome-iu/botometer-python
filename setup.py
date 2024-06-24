@@ -1,16 +1,13 @@
 from setuptools import setup
 
-setup(name='botometer',
-      version='1.6.1',
-      description='Check Twitter accounts for bot behavior',
-      url='https://github.com/IUNetSci/botometer-python',
-      download_url='https://github.com/IUNetSci/botometer-python/archive/1.0.zip',
-      author='Clayton A Davis, Kai-Cheng Yang',
-      author_email='claydavi@indiana.edu,yangkc@iu.edu',
-      license='MIT',
-      packages=['botometer'],
-      install_requires=[
-          'requests',
-          'tweepy >= 3.5.0,<4',
-          ],
-      )
+setup(
+    name="botometer",
+    version="2.0.0",
+    description="Check Twitter accounts for bot behavior",
+    url="https://github.com/osome-iu/botometer-python",
+    author="Kai-Cheng Yang",
+    author_email="yang3kc@gmail.com",
+    license="MIT",
+    packages=["botometer"],
+    install_requires=["requests"],
+)
