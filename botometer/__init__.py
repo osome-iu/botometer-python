@@ -68,8 +68,10 @@ class BotometerX(BotometerBase):
         user_ids = [] if user_ids is None else user_ids
         usernames = [] if usernames is None else usernames
 
-        if not self._is_list_of_type(user_ids, int):
-            raise ValueError("user_ids must be a list of integers")
+        if not self._is_list_of_type(user_ids, int) and not self._is_list_of_type(
+            user_ids, str
+        ):
+            raise ValueError("user_ids must be a list of integers or strings")
 
         if not self._is_list_of_type(usernames, str):
             raise ValueError("usernames must be a list of strings")
