@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/botometer.svg)](https://badge.fury.io/py/botometer)
+
 # Botometer X Python API
 
 A Python API for [Botometer X by OSoMe](https://osome.iu.edu).
