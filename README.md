@@ -84,7 +84,7 @@ The queries will return results like those below:
 ```
 The response will be a list of JSON objects.
 Meanings of the elements in the object:
-- `bot_score`: The bot score, a float number between 0 and 1
+- `bot_score`: The bot score, a float number between 0 and 1 (note that we rescale the score to 1 to 5 on the website)
 - `timestamp`: The time when the bot score was calculated
 - `user_id`: ID of the account
 - `username`: Username of the account
